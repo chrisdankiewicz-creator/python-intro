@@ -1,16 +1,22 @@
-# This is a sample Python script.
+import re
+from datetime import datetime
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def walidacjaemail(email: str) -> bool:
+    return bool(re.match(r"^[^@\s]+@[^@\s]+\.[A-Za-z]{2,}$", email or ""))
 
+def area(width: float, height: float) -> float:
+    if width < 0 or height < 0:
+        raise ValueError("powinno być dodatne")
+    return width * height
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def filtrsort(nums, threshold=0):
+    return sorted(n for n in nums if n > threshold)
 
+def konwertacja(date_str: str, in_fmt: str = "%d-%m-%Y", out_fmt: str = "%Y/%m/%d") -> str:
+    dt = datetime.strptime(date_str, in_fmt)
+    return dt.strftime(out_fmt)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def palindrome(text: str) -> bool:
+    s = "".join(ch.lower() for ch in (text or "") if ch.isalnum())
+    return s == s[::-1]
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
