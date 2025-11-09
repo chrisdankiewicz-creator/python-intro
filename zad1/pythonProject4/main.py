@@ -1,16 +1,34 @@
-# This is a sample Python script.
+# zadanie_1.py
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+#Funkcja wbudowana zip() ---
+#Dok: https://docs.python.org/3/library/functions.html#zip
+#Łączy elementy dwóch list w pary (krotki) element-po-elemencie
 
+#Moduł standardowy math (użyjemy math.sqrt)
+#Dok: https://docs.python.org/3/library/math.html
+#math.sqrt(x) zwraca pierwiastek kwadratowy z x (dla x >= 0)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+#Wyjątek ValueError
+#Dok: https://docs.python.org/3/library/exceptions.html#ValueError
+#Rzucany m.in. przez math.sqrt, gdy argument jest ujemny
 
+import math
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# 1) Dwie listy i łączenie zip()
+temperatury_c=[12.5, 0.0, -3.2, 18.7]# przykładowe wartości (°C)
+miasta=["Gdańsk", "Kraków", "Suwałki", "Wrocław"]
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+pary = list(zip(miasta, temperatury_c))
+print("Pary (miasto, temp °C):", pary)
+#Przykład: [("Gdańsk", 12.5)]
+
+# 2) Użycie funkcji z math
+wynik_poprw = math.sqrt(25)
+print("sqrt(25) =",wynik_poprw)
+
+# 3) Obsługa wyjątku try-except powodu sqrt(-1)
+try:
+    wynik_zle = math.sqrt(-1)  # wywoła ValueError
+    print("sqrt(-1) =", wynik_zle)  # nie zostanie wykonane
+except ValueError as e:
+    print("ValueError przy sqrt(-1):", e)
